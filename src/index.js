@@ -74,6 +74,7 @@ export async function generateTerraformReport(
   const include = new RegExp(inc)
   const exclude = new RegExp(exc)
   const sourceFiles = await getSourceFile(workingDirectory, include, exclude)
+  core.info(sourceFiles)
   const analyzedFiles = await Promise.all(
     sourceFiles.map(async file => {
       try {
