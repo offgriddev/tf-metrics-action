@@ -43,7 +43,12 @@ async function getSourceFile(folder, includedType, excludedType) {
       )
       filePaths = filePaths.concat(recursePaths)
     } else {
-      if (filePath.match(includedType) && !filePath.match(excludedType))
+      if (
+        includedType &&
+        filePath.match(includedType) &&
+        excludedType &&
+        !filePath.match(excludedType)
+      )
         filePaths.push(filePath)
     }
   }
