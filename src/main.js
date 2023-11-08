@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-// import './require-polyfill'
+import './require-polyfill'
 import { readdir, writeFile, mkdir, readFile } from 'fs/promises'
 import { context, getOctokit } from '@actions/github'
 import parser from '@evops/hcl-terraform-parser'
