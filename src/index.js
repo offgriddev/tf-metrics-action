@@ -135,7 +135,7 @@ async function run() {
     const filename = await generateTerraformReport(
       event,
       githubToken,
-      workingDirectory || './terrarform'
+      workingDirectory || './terraform'
     )
 
     core.setOutput('export_filename', filename)
