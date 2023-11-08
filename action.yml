@@ -9,10 +9,6 @@ inputs:
     description: target directory for analysis
   event:
     description: this event
-  includedFileTypes:
-    description: RegExp pattern for files to include in report
-  excludedFileTypes:
-    description: RegExp pattern for files to exclude from report
 
 # Define your outputs here.
 outputs:

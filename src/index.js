@@ -24,7 +24,7 @@ async function getPushDetails(githubToken, event) {
   core.info('Found no PRs related to the commits in the PushEvent')
 }
 
-async function getSourceFile(folder, includedType, excludedType) {
+async function getSourceFile(folder) {
   let filePaths = []
   // get contents for folder
   const paths = await readdir(folder, { withFileTypes: true })
@@ -36,14 +36,10 @@ async function getSourceFile(folder, includedType, excludedType) {
     if (path.isDirectory()) {
       if (path.name.match(/.*node_modules.*|.git|.github/)) continue
 
-      const recursePaths = await getSourceFile(
-        `${folder}/${path.name}`,
-        includedType,
-        excludedType
-      )
+      const recursePaths = await getSourceFile(`${folder}/${path.name}`)
       filePaths = filePaths.concat(recursePaths)
     } else {
-      if (includedType && filePath.match(includedType)) filePaths.push(filePath)
+      if (filePath.match(/.tf$/)) filePaths.push(filePath)
     }
   }
   return filePaths
@@ -68,11 +64,7 @@ export async function generateTerraformReport(
   githubToken,
   workingDirectory
 ) {
-  const inc = core.getInput('includedFileTypes')
-  const exc = core.getInput('excludedFileTypes')
-  const include = new RegExp(inc)
-  const exclude = new RegExp(exc)
-  const sourceFiles = await getSourceFile(workingDirectory, include, exclude)
+  const sourceFiles = await getSourceFile(workingDirectory)
   core.info(sourceFiles)
   const analyzedFiles = await Promise.all(
     sourceFiles.map(async file => {
