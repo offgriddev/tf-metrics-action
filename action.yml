@@ -1,18 +1,23 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Terraform Metric Aggregator'
+description: 'An experimental action that analyses static Terraform code and builds a report'
+author: 'Off Grid Development'
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
-    required: true
-    default: '1000'
+  github_token:
+    description: GitHub token
+  working_directory:
+    description: target directory for analysis
+  event:
+    description: this event
+  includedFileTypes:
+    description: RegExp pattern for files to include in report
+  excludedFileTypes:
+    description: RegExp pattern for files to exclude from report
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  export_filename:
+    description: the path to the report produced
 
 runs:
   using: node20

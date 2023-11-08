@@ -1,7 +1,7 @@
 # Create a JavaScript Action
 
-[![GitHub Super-Linter](https://github.com/actions/javascript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
-![CI](https://github.com/actions/javascript-action/actions/workflows/ci.yml/badge.svg)
+[![GitHub Super-Linter](https://github.com/offgriddev/tf-metrics-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
+![CI](https://github.com/offgriddev/tf-metrics-action/actions/workflows/ci.yml/badge.svg)
 
 Use this template to bootstrap the creation of a JavaScript action. :rocket:
 
@@ -168,7 +168,7 @@ steps:
 ```
 
 For example workflow runs, check out the
-[Actions tab](https://github.com/actions/javascript-action/actions)! :rocket:
+[Actions tab](https://github.com/offgriddev/tf-metrics-action/actions)! :rocket:
 
 ## Usage
 
@@ -189,7 +189,7 @@ steps:
 
   - name: Run my Action
     id: run-action
-    uses: actions/javascript-action@v1 # Commit with the `v1` tag
+    uses: offgriddev/tf-metrics-action@v1 # Commit with the `v1` tag
     with:
       milliseconds: 1000
 

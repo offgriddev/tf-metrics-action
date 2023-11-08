@@ -1,16 +1,17 @@
 {
-  "name": "javascript-action",
-  "description": "GitHub Actions JavaScript Template",
+  "name": "tf-metrics-action",
+  "description": "GitHub Actions for Terraform Analytics Aggregation",
   "version": "0.0.0",
   "author": "",
   "private": true,
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "type": "module",
+  "homepage": "https://github.com/offgriddev/tf-metrics-action#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/offgriddev/tf-metrics-action.git"
   },
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/offgriddev/tf-metrics-action/issues"
   },
   "keywords": [
     "GitHub",
@@ -63,7 +64,9 @@
     ]
   },
   "dependencies": {
-    "@actions/core": "^1.10.1"
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "@evops/hcl-terraform-parser": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
