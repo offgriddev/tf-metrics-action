@@ -1,8 +1,7 @@
-import * as core from '@actions/core'
-import './require-polyfill'
-import { readdir, writeFile, mkdir, readFile } from 'fs/promises'
-import { context, getOctokit } from '@actions/github'
-import parser from '@evops/hcl-terraform-parser'
+const core = require('@actions/core')
+const { readdir, writeFile, mkdir, readFile } = require('fs/promises')
+const { context, getOctokit } = require('@actions/github')
+const parser = require('@evops/hcl-terraform-parser')
 
 async function getPushDetails(githubToken, event) {
   if (!event.commits) return undefined
@@ -128,7 +127,7 @@ export async function generateTerraformReport(
  * The main function for the action.
  * @returns {Promise<void>} Resolves when the action is complete.
  */
-export async function run() {
+async function run() {
   try {
     const workingDirectory = core.getInput('working_directory')
     const githubToken = core.getInput('github_token')

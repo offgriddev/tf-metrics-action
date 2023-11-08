@@ -19,7 +19,6 @@ parser: '@babel/eslint-parser'
 
 parserOptions:
   ecmaVersion: 2023
-  sourceType: module
   requireConfigFile: false
   babelOptions:
     babelrc: false
@@ -43,7 +42,7 @@ rules:
     'i18n-text/no-en': 'off',
     'import/no-commonjs': 'off',
     'import/no-namespace': 'off',
-    'no-unlimited-disable': 'on',
+    'no-unlimited-disable': 'warn',
     'no-console': 'off',
     'no-unused-vars': 'off',
     'prettier/prettier': 'error',
