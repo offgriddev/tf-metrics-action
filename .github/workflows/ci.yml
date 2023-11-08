@@ -53,7 +53,9 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 1000
+          github_token: ${{ github.token }}
+          event: ${{ toJson(github.event) }}
+          includedFileTypes: .tf$
 
       - name: Print Output
         id: output
