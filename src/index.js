@@ -74,26 +74,22 @@ export async function generateTerraformReport(
   const include = new RegExp(inc)
   const exclude = new RegExp(exc)
   const sourceFiles = await getSourceFile(workingDirectory, include, exclude)
-  const analyzedFiles = (
-    await Promise.all(
-      sourceFiles.map(async file => {
-        try {
-          return {
-            file,
-            report: await calculateTerraformMetrics(file)
-          }
-        } catch (e) {
-          return {
-            file,
-            error:
-              'failed to generate report for file, possible syntactical issue'
-          }
+  const analyzedFiles = await Promise.all(
+    sourceFiles.map(async file => {
+      try {
+        return {
+          file,
+          report: await calculateTerraformMetrics(file)
         }
-      })
-    )
+      } catch (e) {
+        return {
+          file,
+          error:
+            'failed to generate report for file, possible syntactical issue'
+        }
+      }
+    })
   )
-    .filter(file => !!file.report)
-    .filter(file => Object.keys(file.report).length > 0)
   const date = new Date().toISOString()
 
   const baseMetrics = {
