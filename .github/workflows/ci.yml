@@ -57,6 +57,7 @@ jobs:
           event: ${{ toJson(github.event) }}
           includedFileTypes: .tf$
 
-      - name: Print Output
-        id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+      - name: Print Result
+        shell: bash
+        run: cat ${{ steps.metrics.outputs.export_filename }}
+    
