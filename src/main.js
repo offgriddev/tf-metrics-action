@@ -61,6 +61,7 @@ async function calculateTerraformMetrics(file) {
     const aspectLength = Object.keys(aspect).length
     output[key] = aspectLength
   }
+  core.info(hclFile)
   return output
 }
 
