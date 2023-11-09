@@ -1,5 +1,6 @@
 const core = require('@actions/core')
 const { readdir, writeFile, mkdir, readFile } = require('fs/promises')
+const { existsSync } = require('fs')
 const { context, getOctokit } = require('@actions/github')
 const parser = require('@evops/hcl-terraform-parser')
 
@@ -65,7 +66,6 @@ export async function generateTerraformReport(
   workingDirectory
 ) {
   const sourceFiles = await getSourceFile(workingDirectory)
-  core.info(sourceFiles)
   const analyzedFiles = await Promise.all(
     sourceFiles.map(async file => {
       try {
@@ -122,7 +122,7 @@ export async function generateTerraformReport(
   const folder = 'complexity-assessment'
   const filename = `${folder}/${context.sha}-infrastructure.json`
   core.info(filename)
-  await mkdir(folder)
+  if (!existsSync(folder)) await mkdir(folder)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
   return filename
 }
