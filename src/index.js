@@ -84,11 +84,26 @@ export async function generateTerraformReport(
   )
   const date = new Date().toISOString()
 
+  const projectAnalytics = {
+    managed_resources: 0,
+    data_resources: 0,
+    module_calls: 0
+  }
+  const summary = analyzedFiles.reduce((prev, cur) => {
+    return {
+      managed_resources:
+        +prev.managed_resources + +cur.report.managed_resources,
+      data_resources: +prev.data_resources + +cur.report.data_resources,
+      module_calls: +prev.module_calls + +cur.report.module_calls
+    }
+  }, projectAnalytics)
+
   const baseMetrics = {
     sha: context.sha,
     ref: context.ref,
     repository: context.repo,
     files: analyzedFiles,
+    summary,
     dateUtc: date
   }
   const prBase = {
