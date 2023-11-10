@@ -43,9 +43,9 @@ async function printReport(report) {
         { data: 'Module Calls', header: true }
       ],
       [
-        file.managed_resources.toString(),
-        file.data_resources.toString(),
-        file.module_calls.toString()
+        file.report.managed_resources.toString(),
+        file.report.data_resources.toString(),
+        file.report.module_calls.toString()
       ]
     ])
   }
