@@ -27,9 +27,9 @@ async function printReport(report) {
       { data: 'Module Calls', header: true }
     ],
     [
-      summary.managed_resources.toString(),
-      summary.data_resources.toString(),
-      summary.module_calls.toString()
+      report.summary.managed_resources.toString(),
+      report.summary.data_resources.toString(),
+      report.summary.module_calls.toString()
     ]
   ])
   summary.addHeading('Complexity Report', 2)
