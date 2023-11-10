@@ -58,7 +58,6 @@ async function calculateTerraformMetrics(file) {
     const aspectLength = Object.keys(aspect).length
     output[key] = aspectLength
   }
-  core.info(hclFile)
   return output
 }
 
@@ -123,7 +122,7 @@ export async function generateTerraformReport(
     : { ...prBase, ...baseMetrics }
   const folder = 'complexity-assessment'
   const filename = `${folder}/${context.sha}-infrastructure.json`
-  printReport(analytics)
+  await printReport(analytics)
   if (!existsSync(folder)) await mkdir(folder)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
   return filename
