@@ -52,3 +52,5 @@ async function printReport(report) {
 
   await summary.write()
 }
+
+module.exports = { printReport }

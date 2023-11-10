@@ -1,3 +1,5 @@
+import { printReport } from './report'
+
 const core = require('@actions/core')
 const { readdir, writeFile, mkdir, readFile } = require('fs/promises')
 const { existsSync } = require('fs')
@@ -121,7 +123,7 @@ export async function generateTerraformReport(
     : { ...prBase, ...baseMetrics }
   const folder = 'complexity-assessment'
   const filename = `${folder}/${context.sha}-infrastructure.json`
-  core.info(filename)
+  printReport(analytics)
   if (!existsSync(folder)) await mkdir(folder)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
   return filename
