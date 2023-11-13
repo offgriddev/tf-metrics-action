@@ -17,7 +17,7 @@ async function printReport(report) {
         header: true
       }
     ],
-    [report.actor, report.sha, report.head]
+    [{ data: report.actor }, { data: report.sha }, { data: report.head }]
   ])
 
   summary.addTable([
@@ -27,9 +27,9 @@ async function printReport(report) {
       { data: 'Module Calls', header: true }
     ],
     [
-      report.summary.managed_resources.toString(),
-      report.summary.data_resources.toString(),
-      report.summary.module_calls.toString()
+      { data: report.summary.managed_resources.toString() },
+      { data: report.summary.data_resources.toString() },
+      { data: report.summary.module_calls.toString() }
     ]
   ])
   summary.addHeading('Complexity Report', 2)
@@ -43,9 +43,9 @@ async function printReport(report) {
         { data: 'Module Calls', header: true }
       ],
       [
-        file.report.managed_resources.toString(),
-        file.report.data_resources.toString(),
-        file.report.module_calls.toString()
+        { data: file.report.managed_resources.toString() },
+        { data: file.report.data_resources.toString() },
+        { data: file.report.module_calls.toString() }
       ]
     ])
   }
