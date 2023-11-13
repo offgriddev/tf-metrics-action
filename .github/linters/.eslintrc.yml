@@ -42,7 +42,6 @@ rules:
     'i18n-text/no-en': 'off',
     'import/no-commonjs': 'off',
     'import/no-namespace': 'off',
-    'no-unlimited-disable': 'warn',
     'no-console': 'off',
     'no-unused-vars': 'off',
     'prettier/prettier': 'error',
