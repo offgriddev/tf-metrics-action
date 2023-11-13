@@ -17,7 +17,7 @@ async function printReport(report) {
         header: true
       }
     ],
-    [report.actor, report.sha, report.ref]
+    [report.actor, report.sha, report.head]
   ])
 
   summary.addTable([
