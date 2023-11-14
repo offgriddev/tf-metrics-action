@@ -1,9 +1,8 @@
-import { printReport } from './report'
-
 const core = require('@actions/core')
 const { readdir, writeFile, mkdir, readFile } = require('fs/promises')
 const { existsSync } = require('fs')
 const { context, getOctokit } = require('@actions/github')
+const { printReport } = require('./report')
 const parser = require('@evops/hcl-terraform-parser')
 
 async function getPushDetails(githubToken, event) {
