@@ -121,9 +121,12 @@ export async function generateTerraformReport(
       }
     : { ...prBase, ...baseMetrics }
   const folder = 'complexity-assessment'
-  const filename = `${folder}/${context.sha}-infrastructure.json`
   await printReport(analytics)
+  const filename = `${folder}/${analytics.repository.repo}/${context.sha}-${analytics.actor}-infrastructure.json`
+  core.info(`Report saved to: ${filename}`)
   if (!existsSync(folder)) await mkdir(folder)
+  if (!existsSync(`${folder}/${analytics.repository.repo}`))
+    await mkdir(`${folder}/${analytics.repository.repo}`)
   await writeFile(filename, JSON.stringify(analytics, undefined, 2))
   return filename
 }
